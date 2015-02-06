@@ -2,7 +2,7 @@
 <Prog> ------ <functions><building>/<building>				N
 
 <functions> ------ <function><functions>/ #			//remove
-<functions> ------ <function><functions>/<function>/ #			N
+<functions> ------ <function><functions>/<function>			N
 
 <function> ------ <funsig> <funcbody>				Y
 
@@ -12,17 +12,17 @@
 <type> ------ int/float/distance/<floortype>/point/wall/doors/window/ratio		Y
 
 <params>------ <type>id<LF1>/#					//remove
-<params>------ <type>id<LF1>/<type>id/#	
+<params>------ <type>id<LF1>/<type>id
 
 <LF1>---------comma<params>/#					//remove
-<LF1>---------comma<params>/comma/#	
+<LF1>---------comma<params>/comma	
 
 
 <funcbody>----- {<stats>}					//remove
 <funcbody>----- {<stats>}/{}				
 
 <stats>----- <stat> <stats>/ #					//remove
-<stats>----- <stat> <stats>/<stat>/ #
+<stats>----- <stat> <stats>/<stat>
 	
 <stat>----- <assignmentstats>/<returnstats>/<declarativestats>		Y
 <declarativestats>----- <type>id<LF2>				Y
@@ -40,7 +40,7 @@
 
 
 <LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E><LF5>/<arithmeticoperators><E><LR>/ #		//remove	
-<LR>------- :<E><LR>/:<E>/.start<LR>/.start/.end<LR>/.end/||(<E><LF5>/<arithmeticoperators><E><LR>/<arithmeticoperators><E>/ #		N
+<LR>------- :<E><LR>/:<E>/.start<LR>/.start/.end<LR>/.end/||(<E><LF5>/<arithmeticoperators><E><LR>/<arithmeticoperators><E>/ 		N
 
 
 <LF5>------ &<E>)<LR>/||,<E>,<E>,<E>)<LR>			//remove
@@ -59,14 +59,14 @@
 
 
 <floors>-------- <floor><floors>/ #					//remove
-<floors>-------- <floor><floors>/<floor>/ #					N
+<floors>-------- <floor><floors>/<floor>					N
 
 
 <floor>-------<floortype> <id><gadha>{stats}/<id><gadha>{<stats>}	//remove
 <floor>-------<floortype> <id><gadha>{stats}/<floortype><id>{}/<floortype><id><gadha>{}/<floortype><id>{<stats>}/<id><gadha>{<stats>}/<id>{}/<id><gadha>{}/<id>{<stats>}	N
 
 
-<gadha> ------ '[' <id>/<integerliteral>  ']'/ #			N
+<gadha> ------ '[' <id>/<integerliteral>  ']'			N
 
 
 <floortype>-----floor							Y
