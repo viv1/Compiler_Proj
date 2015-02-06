@@ -1,0 +1,25 @@
+<Prog> - <functions><building>
+<functions> - <function><functions>/ epsilon
+<function> - <funsig> <funcbody>
+<funsig>- <type>  id (<params>)
+<type> - int/float/distance/<floortype>/point/wall/doors/window/ratio
+<params>- <type>id comma <params>/ epsilon/ <type> id
+<funcbody>- {stats}
+<stats>- <stat> <stats>/ epsilon
+<stat>- <assignmentstats>/<returnstats>/<declarativestats>
+<declarativestats>-- <type>id;/<type>id'['<integerliteral>']'';'
+<assignmentstats>- <type><id>=<E>/ id=<E>/id'['<E>']'=<E>/
+<E>- <E>:<E>/id/literal/(<E>,<E>)/<E>.start/<E>.end/(<E>,<E>,<E>)/<E>||(<E>&<E>)/<E>||(<E>,<E>,<E>,<E>)/<E><arithmeticoperators><E>
+<arithmeticoperators>-'*'/'-'/'+'/'/'/'%'
+<returnstats>- return <E>
+<building> - building <id> {<body>}
+<body>- <forrelatedshit>/ <floors>/<stats>      //redundant
+<floors>-- <floor><floors>/epsilon
+<floor>--<floortype> <id><gadha>{stats}/<id><gadha>{<stats>}
+<gadha> - '[' <id>/<integerliteral>  ']'/epsilon
+<floortype>--floor
+<forelatedshit>--for(exp;exp;exp){stats}
+<exp>--<id><conditionaloperator><E>
+<conditional>-'<'/'>'/'=='/'<='/'>='/'!='
+//for loop and array missing 
+
