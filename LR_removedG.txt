@@ -1,24 +1,31 @@
 <Prog> ------ <functions><building>
-<functions> ------ <function><functions>/ epsilon
+<functions> ------ <function><functions>/ #
 <function> ------ <funsig> <funcbody>
 <funsig>------ <type>  id (<params>)
 <type> ------ int/float/distance/<floortype>/point/wall/doors/window/ratio
 <params>------ <type>id comma <params>/ epsilon/ <type> id
 <funcbody>----- {stats}
-<stats>----- <stat> <stats>/ epsilon
+<stats>----- <stat> <stats>/ #
 <stat>----- <assignmentstats>/<returnstats>/<declarativestats>
 <declarativestats>----- <type>id;/<type>id'['<integerliteral>']'';'
 <assignmentstats>------- <type><id>=<E>/ id=<E>/id'['<E>']'=<E>/
 
+********************************************Removed***********************************
 <E>-------- <E>:<E>/id/literal/(<E>,<E>)/<E>.start/<E>.end/(<E>,<E>,<E>)/<E>||(<E>&<E>)/<E>||(<E>,<E>,<E>,<E>)/<E><arithmeticoperators><E>
+****************************************************************************************
 
+********************************************Added**********************************
+<E>-------- id<LR>/literal<LR>/(<E>,<E>)<LR>/(E,E,E)<LR>
+<LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E>&<E>)<LR>/||(<E>,<E>,<E>,<E>)<LR>/<arithmeticoperators><E><LR>/ #
+
+***************************************************************************************
 <arithmeticoperators>---------'*'/'-'/'+'/'/'/'%'
 <returnstats>--------- return <E>
 <building> ------- building <id> {<body>}
 <body>------- <forrelatedshit>/ <floors>/<stats>      //redundant
-<floors>-------- <floor><floors>/epsilon
+<floors>-------- <floor><floors>/ #
 <floor>-------<floortype> <id><gadha>{stats}/<id><gadha>{<stats>}
-<gadha> ------ '[' <id>/<integerliteral>  ']'/epsilon
+<gadha> ------ '[' <id>/<integerliteral>  ']'/ #
 <floortype>-----floor
 <forelatedshit>------for(exp;exp;exp){stats}
 <exp>------<id><conditionaloperator><E>
