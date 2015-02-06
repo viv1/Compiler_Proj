@@ -39,7 +39,7 @@
 <LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E>&<E>)<LR>/||(<E>,<E>,<E>,<E>)<LR>/<arithmeticoperators><E><LR>/ #	//LF5...line to be removed
 
 
-<LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E><LF5>/||(<E><LF5>/<arithmeticoperators><E><LR>/ #
+<LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E><LF5>/<arithmeticoperators><E><LR>/ #
 <LF5>------ &<E>)<LR>/||,<E>,<E>,<E>)<LR>
 
 ***************************************************************************************
