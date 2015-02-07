@@ -1,4 +1,4 @@
-This project is a part of my course work where I am supposed to design a language and implement its compiler in C language.
+This project is a part of my course work where I (along with 3 others) am supposed to design a language and implement its compiler in C language.
 
 Following are the steps that need to be taken(in the given order):
 	1.Design a LL(1) grammar for your language.

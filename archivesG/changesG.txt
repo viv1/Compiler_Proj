@@ -1,0 +1,41 @@
+# is our epsilon(phai)
+
+<Prog> ------ <functions><building>			**First** **type/building
+-
+<functions> ------ <function><functions>/ #			 **type/#			****later
+		
+<function> ------ <funsig> <funcbody>			 **type
+	
+<funsig>------ <type>  id (<params>)			**type
+	
+<type> ------ int/float/distance/<floortype>/point/wall/doors/window/ratio
+
+<params>------ <type>id,<params>/#			**type/#				****later[[[[[[[all params end in comma]]]]]]]
+	
+
+<funcbody>----- {<stats>}<KIM>				{
+
+<stats>----- <stat> <stats>/ #			#/**type/return					*****later 
+ 
+<stat>----- <superstats>/<returnstats>	   **type/return
+	
+<superstats>----- <type>id<Zip>/id<LF3>				**type		
+<Zip>--------  ;/[<integerliteral>];/=<E>				;/[
+<LF3>------- =<E>/[<E>]=<E>					=/[
+<E>-------- id<LR>/literal<LR>/(<E>,<E><LF4>			id/literal/(
+<LF4>------- )<LR>/,<E>)<LR> 					)/,
+<LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E><LF5>/<arithmeticoperators><E><LR>/ # 		:/.start/.end/||/#/**arith_op       ****later
+<LF5>------ &<E>)<LR>/||,<E>,<E>,<E>)<LR>							&/||
+<arithmeticoperators>---------'*'/'-'/'+'/'/'/'%'		**arith_op				
+<returnstats>--------- return <E>				return
+<building> ------- building <id> {<body>}<KIM>			building
+<body>------- <forrelatedstuff>/ <floors>/<stats>      		for/floor/id/**type/return	****later    ----intersection of # and # ?
+<floors>-------- <floor><floors>/ #				#/floor/id			*****later
+<floor>-------<floortype> <id><arr>{stats}<KIM>/id<arr>{<stats>}<KIM>     floor/id
+<arr> ------ '[' <num>  ']'/ #			[/#
+<num>------<id>/<integerliteral> 
+<floortype>-----floor						floor
+<forelatedstuff>------for(exp;exp;exp){stats}<KIM>			for
+<exp>------id<conditionaloperator><E>				id
+<conditional>-------'<'/'>'/'=='/'<='/'>='/'!='			**cond
+<KIM>------ <type>/id/#

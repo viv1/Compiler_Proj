@@ -1,0 +1,57 @@
+<Prog> ------ <functions><building>
+<functions> ------ <function><functions>/ #
+<function> ------ <funsig> <funcbody>
+<funsig>------ <type>  id (<params>)
+<type> ------ int/float/distance/<floortype>/point/wall/doors/window/ratio
+
+*************************************Update******************************************
+<params>------ <type>id comma <params>/ <type> id/#		//LF1...line to be removed
+
+<params>------ <type>id<LF1>/#
+<LF1>---------comma<params>/#
+
+****************************************************************************************
+<funcbody>----- {stats}
+<stats>----- <stat> <stats>/ #
+<stat>----- <assignmentstats>/<returnstats>/<declarativestats>i/#
+
+**************************************Update************************************************
+<declarativestats>----- <type>id;/<type>id'['<integerliteral>']'';'	//LF2...line to be removed
+
+<declarativestats>----- <type>id<LF2>
+<LF2> ------ ;/[<integerliteral>];
+
+*********************************************************************************************
+
+****************************************Update********************************************
+<assignmentstats>------- <type><id>=<E>/ id=<E>/id'['<E>']'=<E>/	//LF3... line to be removed
+
+<assignmentstats>------- <type><id>=<E>/ id<LF3>
+<LF3>------- =<E>/[<E>]=<E>
+
+*******************************************Update**********************************
+<E>-------- id<LR>/literal<LR>/(<E>,<E>)<LR>/(<E>,<E>,<E>)<LR>		//LF4....line to be removed
+
+<E>-------- id<LR>/literal<LR>/(<E>,<E><LF4>
+<LF4>------- )<LR>/,<E>)<LR> 
+
+
+<LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E>&<E>)<LR>/||(<E>,<E>,<E>,<E>)<LR>/<arithmeticoperators><E><LR>/ #	//LF5...line to be removed
+
+
+<LR>------- :<E><LR>/.start<LR>/.end<LR>/||(<E><LF5>/<arithmeticoperators><E><LR>/ #
+<LF5>------ &<E>)<LR>/||,<E>,<E>,<E>)<LR>
+
+***************************************************************************************
+<arithmeticoperators>---------'*'/'-'/'+'/'/'/'%'
+<returnstats>--------- return <E>
+<building> ------- building <id> {<body>}
+<body>------- <forrelatedshit>/ <floors>/<stats>      //redundant
+<floors>-------- <floor><floors>/ #
+<floor>-------<floortype> <id><gadha>{stats}/<id><gadha>{<stats>}
+<gadha> ------ '[' <id>/<integerliteral>  ']'/ #
+<floortype>-----floor
+<forelatedshit>------for(exp;exp;exp){stats}
+<exp>------<id><conditionaloperator><E>
+<conditional>-------'<'/'>'/'=='/'<='/'>='/'!='
+

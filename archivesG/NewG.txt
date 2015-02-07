@@ -1,0 +1,15 @@
+<Prog> ------ <functions><building>    
+
+<functions> ------ <function><functions>/ # 
+<function> ------ <type>id(<params>){<stats>} 
+<type> ------ int/float/distance/floor/point/wall/doors/window/ratio
+<params>------ <type>id,<params>/# 		...Params end with comma...
+<stats>----- <stat><stats>/ #
+<stat>----- <normalstats>/<returnstats>
+<normalstats>----- <type>id<Zip>/id<LF3
+<Zip>--------  ;/[<integerliteral>];/=<E>
+<LF3>------- =<E>/[<Kim>]=<E>
+<Kim>------- id/integerliteral
+<E>-------- <Kim>:<Kim>/id/literal/(<E>,<E>)/<E>.start/<E>.end/(<E>,<E>,<E>)/<E>||(<E>&<E>)/<E>||(<E>,<E>,<E>,<E>)/<E><arithmeticoperators><E>
+
+   
