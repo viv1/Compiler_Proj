@@ -1,0 +1,39 @@
+<Prog> ------ <functions><building>			
+<functions> ------ <function><functions>/ #			 
+<function> ------ <type>  <id> (<params>){<stats>}			   
+<type> ------ int/float/distance/point/wall/doors/window/ratio
+<params>--- <type>id','<params>/#
+<stats>----- <stat> <stats>/ #
+<stat>----- <funcstats>/<returnstats>/<forfunction>/<iffunction>
+<forfunction>-----for(exp;exp;exp){<stats>}
+<iffunction>--if(exp){<stats>}
+<returnstats>--'return'<Kim>;
+<funcstats>---<normalstats>/id<LF3>;
+<normalstats>---<type>id<Zip>
+<Zip>----;/[<Kim>];/=<E>;
+<LF3>------- =<E>/[<Kim>]=<E>	   
+<Kim>---id/literal
+<E>--<Kim><K>/(<LF1>
+<LF1>---id<LF4>/literal,<Kim>)
+<LF4>-----,<LF5>
+<LF5>--id<LF6>/literal)
+<LF6>--)/,<Kim>)
+<K>--:<Kim>/||(id<LF9>/(<LF7>/<arithmeticoperators><Kim>/'.start'/'.end'/#
+<LF7>------id,<LF8>/)/literal,<buildparams>)
+<LF8>------id<LF0>/)/<literal>','<buildparams>) 
+<LF0>------)/','<buildparams>)
+<buildparams>--- <Kim>','<buildparams>/#
+<LF9>---&id)/,id,<Kim>,<Kim>)
+<arithmeticoperators>--'*'/'-'/'+'/'/'/'%'
+<building> ------- 'BUILDING' <id> {<newstats>}
+<newstats>--<body><newstats>/#
+<body>-----<forrelatedstuff>/<floor>/<funcstats>/<ifrelatedstuff>
+<ifrelatedstuff>--if(exp){<funcstats><newstats>}      		
+<forelatedstuff>------for(exp;exp;exp){<funcstats><newstats>}	
+<floor>-------'floor'<id><arr>{<funcstats><newstats>}/id<arr>{<funcstats><newstats>}
+<arr> ------ '[' <literal>  ']'/ #
+<exp>------id<conditionaloperator><E>				
+<conditionaloperator>-------'<'<LF10>/'>'<LF10>/'=='/'!='
+<LF10>------'='/#
+<id>----- 	 [A-Z,a-z]+
+<literal>---[-+]?[0-9]*\.?[0-9]+
