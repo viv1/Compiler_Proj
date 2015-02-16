@@ -1,0 +1,39 @@
+<Prog> ===> <functions><building>			
+<functions> ===> <function><functions>/ EPS			 
+<function> ===><type> <id>TK_ROUND_OPEN<params>TK_ROUND_CLOSETK_CURLY_OPEN<stats>TK_CURLY_CLOSE			   
+<type> ===> TK_INT/TK_FLOAT/TK_DISTANCE/TK_POINT/TK_WALL/TK_DOOR/TK_WINDOW/TK_RATIO
+<params>===> <type><id>TK_COMMA<params>/EPS
+<stats>===> <stat> <stats>/ EPS
+<stat>===> <funcstats>/<returnstats>/<forfunction>/<iffunction>
+<forfunction>===>TK_FOR TK_ROUND_OPEN<exp>TK_SEMICOLON<exp>TK_SEMICOLON<exp>TK_ROUND_CLOSETK_CURLY_OPEN<stats>TK_CURLY_CLOSE
+<iffunction>===>TK_IF TK_ROUND_OPEN<exp>TK_ROUND_CLOSETK_CURLY_OPEN<stats>TK_CURLY_CLOSE
+<returnstats>===>TK_RETURN<Kim>TK_SEMICOLON
+<funcstats>===><normalstats>/<id><LF3>TK_SEMICOLON
+<normalstats>===><type><id><Zip>
+<Zip>===>TK_SEMICOLON/TK_SQUARE_OPEN<Kim>TK_SQUARE_CLOSETK_SEMICOLON/=<E>TK_SEMICOLON
+<LF3>===> =<E>/TK_SQUARE_OPEN<Kim>TK_SQUARE_CLOSE=<E>	   
+<Kim>===><id>/<literal>
+<E>===><Kim><K>/TK_ROUND_OPEN<LF1>
+<LF1>===><id><LF4>/<literal>TK_COMMA<Kim>TK_ROUND_CLOSE
+<LF4>===>TK_COMMA<LF5>
+<LF5>===><id><LF6>/<literal>TK_ROUND_CLOSE
+<LF6>===>TK_ROUND_CLOSE/TK_COMMA<Kim>TK_ROUND_CLOSE
+<K>===>TK_COLON<Kim>/TK_THICKNESS TK_ROUND_OPEN<id><LF9>/TK_ROUND_OPEN<LF7>/<arithmeticoperators><Kim>/EPS/TK_DOTSTART/TK_DOTEND
+<LF7>===><id>TK_COMMA<LF8>/<literal>TK_COMMA<buildparams>TK_ROUND_CLOSE/TK_ROUND_CLOSE
+<LF8>===><id><LF0>/TK_ROUND_CLOSE/<literal>TK_COMMA<buildparams>TK_ROUND_CLOSE
+<LF0>===>TK_ROUND_CLOSE/TK_COMMA<buildparams>TK_ROUND_CLOSE
+<buildparams>===> <Kim>TK_COMMA<buildparams>/EPS
+<LF9>===>TK_AND <id>TK_ROUND_CLOSE/TK_COMMA<id>TK_COMMA<Kim>TK_COMMA<Kim>TK_ROUND_CLOSE
+<arithmeticoperators>===>TK_MUL/TK_MINUS/TK_PLUS/TK_DIVIDE
+<building> ===> TK_BUILDING <id> TK_CURLY_OPEN<newstats>TK_CURLY_CLOSE
+<newstats>===><body><newstats>/EPS
+<body>===><forrelatedstuff>/<floor>/<funcstats>/<ifrelatedstuff>
+<ifrelatedstuff>===>TK_IF TK_ROUND_OPEN<exp>TK_ROUND_CLOSETK_CURLY_OPEN<funcstats><newstats>TK_CURLY_CLOSE      		
+<forelatedstuff>===>TK_FOR TK_ROUND_OPEN<exp>TK_SEMICOLON<exp>TK_SEMICOLON<exp>TK_ROUND_CLOSETK_CURLY_OPEN<funcstats><newstats>TK_CURLY_CLOSE	
+<floor>===>TK_FLOOR<id><arr>TK_CURLY_OPEN<funcstats><newstats>TK_CURLY_CLOSE/<id><arr>TK_CURLY_OPEN<funcstats><newstats>TK_CURLY_CLOSE
+<arr> ===> TK_SQUARE_OPEN <literal> TK_SQUARE_CLOSE/ EPS
+<exp>===>id<conditionaloperator><E>				
+<conditionaloperator>===>TK_LESS_THAN<LF10>/TK_GREATER_THAN<LF10>/TK_EQUALTO<LF10>/TK_NOT_EQUAL_TO
+<LF10>===>TK_EQUALTO/EPS
+<id>===> TK_IDENTIFIER
+<literal>===>TK_LITERAL
