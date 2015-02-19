@@ -120,7 +120,7 @@ for(i=0;i<strlen(str);i++){									//pointer 1
 	for(j=i;j<strlen(str);j++){								//pointer 2
 		
 		//printf("%s\n",&str[j] );
-		curr_token[strlen(curr_token)]= str[j];				//adding next character		
+		curr_token[strlen(curr_token)]= str[]j;				//adding next character		
 		//printf("%s\n",curr_token);	
 		
 
