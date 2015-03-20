@@ -59,7 +59,7 @@ while(next_char != EOF){
 					}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A') state=92;
 				else if(next_char<='9' && next_char>='0') state=93;
-				else fprintf(fp_write,"error\n");
+				else fprintf(fp_write,"error ");
 				break;
 
 			
@@ -68,7 +68,7 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='s') state=2;
 				else if(next_char=='e') state=7;
-				else fprintf(fp_write,"error1\n");
+				else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -100,8 +100,8 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
 
-				//fprintf(fp_write,".start\n");
-				fprintf(fp_write,"TK_DOTSTART\n");
+				//fprintf(fp_write,".start ");
+				fprintf(fp_write,"TK_DOTSTART ");
 				state=0;
 				next_char=fgetc(fp);
 			}
@@ -124,8 +124,8 @@ while(next_char != EOF){
 			case 9:{
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,".end\n");
-				fprintf(fp_write,"TK_DOTEND\n");
+				//fprintf(fp_write,".end ");
+				fprintf(fp_write,"TK_DOTEND ");
 
 				state=0;
 				next_char=fgetc(fp);
@@ -144,6 +144,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='o') state=11;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -157,6 +164,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='i') state=12;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -170,6 +184,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='n') state=13;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -183,6 +204,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='t') state=14;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -195,12 +223,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"point\n");
-				fprintf(fp_write,"TK_POINT\n");
+				//fprintf(fp_write,"point ");
+				fprintf(fp_write,"TK_POINT ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -215,8 +250,15 @@ while(next_char != EOF){
 				if(next_char=='a') state=16;
 				else if(next_char=='i') state=19;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-
-				else fprintf(fp_write,"error1\n");
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				
+				//else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -230,7 +272,14 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='l') state=17;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				
 				break;
 			}
 
@@ -244,7 +293,14 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='l') state=18;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				
 				break;
 			}
 
@@ -256,13 +312,20 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"wall\n");
-				fprintf(fp_write,"TK_WALL\n");
+				//fprintf(fp_write,"wall ");
+				fprintf(fp_write,"TK_WALL ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				
 			break;
 		}
 
@@ -276,7 +339,14 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='n') state=20;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				
 				break;
 			}
 
@@ -290,6 +360,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='d') state=21;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -303,6 +380,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='o') state=22;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -316,6 +400,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='w') state=23;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -328,13 +419,20 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"window\n");
-				fprintf(fp_write,"TK_WINDOW\n");
+				//fprintf(fp_write,"window ");
+				fprintf(fp_write,"TK_WINDOW ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 			else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-			break;
+			else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				break;
 		}
 
 
@@ -349,7 +447,14 @@ while(next_char != EOF){
 				if(next_char=='o') state=25;
 				else if(next_char=='i') state=28;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-				else fprintf(fp_write,"error1\n");
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				//else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -363,6 +468,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='o') state=26;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -377,6 +489,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='r') state=27;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -389,13 +508,20 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"door\n");
-				fprintf(fp_write,"TK_DOOR\n");
+				//fprintf(fp_write,"door ");
+				fprintf(fp_write,"TK_DOOR ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-			break;
+			else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				break;
 		}
 
 			case 28:{
@@ -408,6 +534,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='s') state=29;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -421,6 +554,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='t') state=30;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -434,6 +574,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='a') state=31;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -447,6 +594,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='n') state=32;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -460,6 +614,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='c') state=33;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -473,6 +634,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='e') state=34;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -485,12 +653,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"distance\n");
-				fprintf(fp_write,"TK_DISTANCE\n");
+				//fprintf(fp_write,"distance ");
+				fprintf(fp_write,"TK_DISTANCE ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -505,7 +680,14 @@ while(next_char != EOF){
 				if(next_char=='e') state=36;
 				else if(next_char=='a') state=41;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-				else fprintf(fp_write,"error1\n");
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				//else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -520,6 +702,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='t') state=37;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -533,6 +722,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='u') state=38;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -546,6 +742,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='r') state=39;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -560,6 +763,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='n') state=40;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -572,12 +782,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"return\n");
-				fprintf(fp_write,"TK_RETURN\n");
+				//fprintf(fp_write,"return ");
+				fprintf(fp_write,"TK_RETURN ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -591,6 +808,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='t') state=42;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -604,6 +828,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='i') state=43;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -617,6 +848,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='o') state=44;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -629,12 +867,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"ratio\n");
-				fprintf(fp_write,"TK_RATIO\n");
+				//fprintf(fp_write,"ratio ");
+				fprintf(fp_write,"TK_RATIO ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -649,7 +894,14 @@ while(next_char != EOF){
 				if(next_char=='f') state=46;
 				else if(next_char=='n') state=47;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-				else fprintf(fp_write,"error1\n");
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				//else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -662,12 +914,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"if\n");
-				fprintf(fp_write,"TK_IF\n");
+				//fprintf(fp_write,"if ");
+				fprintf(fp_write,"TK_IF ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -680,8 +939,15 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char=='t') state=48;
-				//fprintf(fp_write,"int\n");
+				//fprintf(fp_write,"int ");
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -694,12 +960,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"int\n");
-				fprintf(fp_write,"TK_INT\n");
+				//fprintf(fp_write,"int ");
+				fprintf(fp_write,"TK_INT ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -714,7 +987,14 @@ while(next_char != EOF){
 				if(next_char=='l') state=50;
 				else if(next_char=='o') state=56;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-				else fprintf(fp_write,"error1\n");
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				//else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -728,6 +1008,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='o') state=51;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -742,7 +1029,14 @@ while(next_char != EOF){
 				if(next_char=='a') state=52;
 				else if(next_char=='o') state=54;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
-				else fprintf(fp_write,"error1\n");
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
+				//else fprintf(fp_write,"error1 ");
 				break;
 			}
 
@@ -756,6 +1050,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='t') state=53;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -768,12 +1069,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"float\n");
-				fprintf(fp_write,"TK_FLOAT\n");
+				//fprintf(fp_write,"float ");
+				fprintf(fp_write,"TK_FLOAT ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -787,6 +1095,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='r') state=55;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -799,12 +1114,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"floor\n");
-				fprintf(fp_write,"TK_FLOOR\n");
+				//fprintf(fp_write,"floor ");
+				fprintf(fp_write,"TK_FLOOR ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -818,6 +1140,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='r') state=57;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -830,12 +1159,19 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"for\n");
-				fprintf(fp_write,"TK_FOR\n");
+				//fprintf(fp_write,"for ");
+				fprintf(fp_write,"TK_FOR ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
@@ -848,6 +1184,14 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char=='u') state=59;
+				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -861,6 +1205,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='i') state=60;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -874,6 +1225,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='l') state=61;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -887,6 +1245,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='d') state=62;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -900,6 +1265,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='i') state=63;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -913,6 +1285,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='n') state=64;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -926,6 +1305,13 @@ while(next_char != EOF){
 				next_char=fgetc(fp);
 				if(next_char=='g') state=65;
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 			}
 
@@ -939,114 +1325,121 @@ while(next_char != EOF){
 
 				next_char=fgetc(fp);
 				if(next_char==32||next_char=='\n'||next_char=='\t'){
-				//fprintf(fp_write,"building\n");
-				fprintf(fp_write,"TK_BUILDING\n");
+				//fprintf(fp_write,"building ");
+				fprintf(fp_write,"TK_BUILDING ");
 				state=0;
 				next_char=fgetc(fp);
 			}
 				else if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
+				else {
+					state=0;
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
+					id[0]='\0';
+				//next_char=fgetc(fp);	
+				}
 				break;
 		}
 
 			case 66	:{
-				//fprintf(fp_write,"+\n");
-				fprintf(fp_write,"TK_PLUS\n");
+				//fprintf(fp_write,"+ ");
+				fprintf(fp_write,"TK_PLUS ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 67	:{
-				//fprintf(fp_write,"-\n");
-				fprintf(fp_write,"TK_MINUS\n");
+				//fprintf(fp_write,"- ");
+				fprintf(fp_write,"TK_MINUS ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 68	:{
-				//fprintf(fp_write,"/\n");
-				fprintf(fp_write,"TK_DIVIDE\n");
+				//fprintf(fp_write,"/ ");
+				fprintf(fp_write,"TK_DIVIDE ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 69	:{
-				//fprintf(fp_write,"*\n");
-				fprintf(fp_write,"TK_MUL\n");
+				//fprintf(fp_write,"* ");
+				fprintf(fp_write,"TK_MUL ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 70	:{
-				//fprintf(fp_write,"(\n");
-				fprintf(fp_write,"TK_ROUND_OPEN\n");
+				//fprintf(fp_write,"( ");
+				fprintf(fp_write,"TK_ROUND_OPEN ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 71	:{
-				//fprintf(fp_write,")\n");
-				fprintf(fp_write,"TK_ROUND_CLOSE\n");
+				//fprintf(fp_write,") ");
+				fprintf(fp_write,"TK_ROUND_CLOSE ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 72	:{
-				//fprintf(fp_write,"{\n");
-				fprintf(fp_write,"TK_CURLY_OPEN\n");
+				//fprintf(fp_write,"{ ");
+				fprintf(fp_write,"TK_CURLY_OPEN ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 73	:{
-				//fprintf(fp_write,"}\n");
-				fprintf(fp_write,"TK_CURLY_CLOSE\n");
+				//fprintf(fp_write,"} ");
+				fprintf(fp_write,"TK_CURLY_CLOSE ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 74	:{
-				//fprintf(fp_write,"[\n");
-				fprintf(fp_write,"TK_SQUARE_OPEN\n");
+				//fprintf(fp_write,"[ ");
+				fprintf(fp_write,"TK_SQUARE_OPEN ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 75	:{
-				//fprintf(fp_write,"]\n");
-				fprintf(fp_write,"TK_SQUARE_CLOSE\n");
+				//fprintf(fp_write,"] ");
+				fprintf(fp_write,"TK_SQUARE_CLOSE ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 76	:{
-				//fprintf(fp_write,";\n");
-				fprintf(fp_write,"TK_SEMICOLON\n");
+				//fprintf(fp_write,"; ");
+				fprintf(fp_write,"TK_SEMICOLON ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}
 
 			case 77	:{
-				//fprintf(fp_write,",\n");
-				fprintf(fp_write,"TK_COMMA\n");
+				//fprintf(fp_write,", ");
+				fprintf(fp_write,"TK_COMMA ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}	
 
 			case 78	:{
-				//fprintf(fp_write,"&\n");
-				fprintf(fp_write,"TK_AND\n");
+				//fprintf(fp_write,"& ");
+				fprintf(fp_write,"TK_AND ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
@@ -1060,8 +1453,8 @@ while(next_char != EOF){
 			}
 
 			case 80	:{
-				//fprintf(fp_write,"||\n");
-				fprintf(fp_write,"TK_THICKNESS\n");
+				//fprintf(fp_write,"|| ");
+				fprintf(fp_write,"TK_THICKNESS ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
@@ -1075,8 +1468,8 @@ while(next_char != EOF){
 			}
 
 			case 82	:{
-				//fprintf(fp_write,"!=\n");
-				fprintf(fp_write,"TK_NOT_EQUAL_TO\n");
+				//fprintf(fp_write,"!= ");
+				fprintf(fp_write,"TK_NOT_EQUAL_TO ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
@@ -1090,13 +1483,13 @@ while(next_char != EOF){
 				break;
 			}
 
-			case 84 :{     //fprintf(fp_write,">=\n");
-			fprintf(fp_write,"TK_GREATER_EQUAL\n");     state=0;
+			case 84 :{     //fprintf(fp_write,">= ");
+			fprintf(fp_write,"TK_GREATER_EQUAL ");     state=0;
 			next_char=fgetc(fp);     break; }
 
 			case 85	:{
-				//fprintf(fp_write,">\n");
-				fprintf(fp_write,"TK_GREATER_THAN\n");
+				//fprintf(fp_write,"> ");
+				fprintf(fp_write,"TK_GREATER_THAN ");
 				state=0;
 				//next_char=fgetc(fp);			//NOTE....next character already read in state 83
 				break;
@@ -1111,16 +1504,16 @@ while(next_char != EOF){
 			}
 
 			case 87	:{
-				//fprintf(fp_write,"<=\n");
-				fprintf(fp_write,"TK_LESS_EQUAL\n");
+				//fprintf(fp_write,"<= ");
+				fprintf(fp_write,"TK_LESS_EQUAL ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}	
 
 			case 88	:{
-				//fprintf(fp_write,"<\n");
-				fprintf(fp_write,"TK_LESS_THAN\n");
+				//fprintf(fp_write,"< ");
+				fprintf(fp_write,"TK_LESS_THAN ");
 				state=0;
 				//next_char=fgetc(fp);				//NOTE....next character already read in state 86
 				break;
@@ -1135,16 +1528,16 @@ while(next_char != EOF){
 			}
 
 			case 90	:{
-				//fprintf(fp_write,"==\n");
-				fprintf(fp_write,"TK_ASSIGN\n");
+				//fprintf(fp_write,"== ");
+				fprintf(fp_write,"TK_ASSIGN ");
 				state=0;
 				next_char=fgetc(fp);
 				break;
 			}	
 
 			case 91	:{
-				//fprintf(fp_write,"=\n");
-				fprintf(fp_write,"TK_EQUALTO\n");
+				//fprintf(fp_write,"= ");
+				fprintf(fp_write,"TK_EQUALTO ");
 				state=0;
 				//next_char=fgetc(fp);				//NOTE....next character already read in state 89
 				break;
@@ -1159,12 +1552,12 @@ while(next_char != EOF){
 				id[len+1]='\0';
 
 				next_char=fgetc(fp);
-				//fprintf(fp_write,"%c\n",next_char );
+				//fprintf(fp_write,"%c ",next_char );
 				if(next_char=='_'|| next_char<='z' && next_char>='a' || next_char <='Z' && next_char >='A'|| next_char<='9' && next_char>='0') state=92;
 				else {
 					state=0;
-					//fprintf(fp_write,"%s\n", id);
-					fprintf(fp_write,"TK_IDENTIFIER\n");
+					//fprintf(fp_write,"%s ", id);
+					fprintf(fp_write,"TK_IDENTIFIER ");
 					id[0]='\0';
 				//next_char=fgetc(fp);	
 				}
@@ -1183,8 +1576,8 @@ while(next_char != EOF){
 				else if(next_char=='.') state=94;
 				else {
 					state=0;
-					//fprintf(fp_write,"%s\n", num);
-					fprintf(fp_write,"TK_LITERAL\n");
+					//fprintf(fp_write,"%s ", num);
+					fprintf(fp_write,"TK_LITERAL ");
 					num[0]='\0';
 				
 				}
@@ -1203,8 +1596,8 @@ while(next_char != EOF){
 				
 				else {
 					state=0;
-					//fprintf(fp_write,"%s\n", num);
-					fprintf(fp_write,"TK_LITERAL\n");
+					//fprintf(fp_write,"%s ", num);
+					fprintf(fp_write,"TK_LITERAL ");
 					num[0]='\0';
 				
 				}
