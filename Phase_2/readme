@@ -1,0 +1,59 @@
+Team 9 Group 2
+Piyush Dosi 2012C6PS317P
+Vivek Sahu 2012A7PS058P
+
+
+	Lexor is fully working....
+
+
+
+
+
+
+**************************************************************************************************************************
+//parser
+
+So in order to build a parse tree we used explicit function calling.Corresponding to each Token we have a case (i.e what functions to call)
+We build the case based analysis using the Parse Table which we made using first and follow sets.Each functions returns a pointer to the corresponding subtree ...After getting the parse tree we print it.
+
+Then pass this to AST.
+
+Output : Token which are getting consumed  and as they are getting consumed.	
+
+This is fully working. 
+
+
+
+
+********************************************************************************************************************************
+//for AST...
+
+Not Working 
+
+but we have implemented a lot of functions reducing the number of nodes in the parse tree.
+
+we have the parse tree from parser....
+
+so what we did was reduce that parse tree in phases...
+
+Phase 1: Reduce it...
+	in this i have removed the parents ehcich have only one children...
+
+Phase 2 : Remove useless tokens like { ,}  etc....
+
+after this we will get a tree with terminals in just the next node to non terminals...
+	
+for the following phase i have written specific AST nodes for if ,for ,various point assignment method 1,point assignment method 2 etc etc
+Phase 3  : Assignemnet handling...
+	handle the assignment of point ,wall depending on the various types of declaration you have..
+Phase 4: 
+	Arithmetic Operator Handling...
+
+Phase 5: if handling..
+
+Phase 6 : for handling...
+
+
+Were not able to complete:
+	Error 1 .....expected ‘struct node *’ but argument is of type ‘struct FILE *’
+ void _Reduce(struct node *root){

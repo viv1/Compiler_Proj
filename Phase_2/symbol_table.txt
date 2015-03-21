@@ -1,0 +1,22 @@
+NAME				TOKEN_TYPE				LINE_NO 
+
+           b		TK_IDENTIFIER           1
+          f1		TK_IDENTIFIER           2
+          p1		TK_IDENTIFIER           3
+          p2		TK_IDENTIFIER           4
+          w1		TK_IDENTIFIER           5
+          p1		TK_IDENTIFIER           5
+          p2		TK_IDENTIFIER           5
+          w2		TK_IDENTIFIER           6
+          w1		TK_IDENTIFIER           6
+          p2		TK_IDENTIFIER           6
+          p4		TK_IDENTIFIER           7
+          p3		TK_IDENTIFIER           8
+          p4		TK_IDENTIFIER           8
+          w2		TK_IDENTIFIER           8
+        win1		TK_IDENTIFIER           9
+          p1		TK_IDENTIFIER           9
+          p2		TK_IDENTIFIER           9
+          d1		TK_IDENTIFIER          10
+          p3		TK_IDENTIFIER          10
+          p4		TK_IDENTIFIER          10

@@ -1,0 +1,14 @@
+building b1{
+floor f1{
+point p1 = (0,0);
+Point p2 = (100,0);
+wall w1 = 2||(p1 & p2);
+wall w2 = 3||(w1,p2,90,40);
+}
+
+floor f2{
+point p3 = (30,0);
+point p4 = (70,0);
+wall w3 = 2||(p3 & p4);
+}
+}

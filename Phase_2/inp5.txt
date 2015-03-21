@@ -1,0 +1,12 @@
+building b{
+floor f{
+wall W[4];
+int i =0;
+for(i = 0 ;i<4;i = i+1){
+int var_a = 2*i;
+point pt_d = (0,var_a);
+point pt_e = (25,var_a);
+w[i] = 2||(pt_d & pt_e);
+}
+}
+}
